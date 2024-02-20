@@ -1,4 +1,5 @@
 import 'package:app_telas_multiplas_1/tela2.dart';
+import 'package:app_telas_multiplas_1/tela3.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -31,6 +32,9 @@ class Telaprincipal extends StatelessWidget {
           ElevatedButton(onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context) => Telasecundaria(),));
           }, child: Text("Tela 2")),
+          ElevatedButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Telatrez(),));
+          }, child: Text("Tela 3"))
         ],
         
       ),
