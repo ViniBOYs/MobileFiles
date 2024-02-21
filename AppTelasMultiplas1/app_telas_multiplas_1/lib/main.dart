@@ -20,7 +20,7 @@ class Telaprincipal extends StatelessWidget {
     
     return Scaffold(
       appBar: AppBar(
-        title: Text("Aplicativo aula 03")
+        title: Text("Aplicativo aula 03"),
     ),
     body:
       Column(

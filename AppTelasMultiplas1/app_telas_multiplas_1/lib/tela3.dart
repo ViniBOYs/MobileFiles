@@ -1,3 +1,4 @@
+import 'package:app_telas_multiplas_1/tela4.dart';
 import 'package:flutter/material.dart';
 
 class Telatrez extends StatelessWidget {
@@ -16,7 +17,10 @@ class Telatrez extends StatelessWidget {
             child: Text("Faz o L"),),
             ElevatedButton(onPressed: () {
               Navigator.pop(context);
-            }, child: Text("Pedala"))
+            }, child: Text("Pedala")),
+            ElevatedButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => telacontador(),));
+          }, child: Text("Tela contador"))
         ],
       )
     );

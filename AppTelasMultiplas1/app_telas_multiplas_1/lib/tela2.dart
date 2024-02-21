@@ -15,13 +15,19 @@ class Telasecundaria extends StatelessWidget {
           children: [
             Container(color: Colors.red, width: 400, height: 180,
             child: Text("Faz o L"),),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
             ElevatedButton(onPressed: () {
               Navigator.pop(context);
             }, child: Text("Pedala")),
             ElevatedButton(onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context) => Telatrez(),));
           }, child: Text("Tela 3"))
+          ],
+        )
         ],
+        
       )
     );
   }
