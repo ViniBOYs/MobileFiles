@@ -52,9 +52,6 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
   Widget build(BuildContext context) {
     // Widget Scaffold 
     return Scaffold(
-      appBar: AppBar(
-        title: Text("App Navigator Bar"),
-      ),
       // Center centraliza o widget
       body: Center(
         // .elementAt permite passar um numero como index para o widget
@@ -110,6 +107,10 @@ class _TelaHomeState extends State<TelaHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Comidas Tipicas"),
+        backgroundColor: Colors.greenAccent,
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -135,6 +136,10 @@ class TelaBraza extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Comidas Tipicas Brasileiras"),
+        backgroundColor: Colors.green,
+      ),
       body: Column(
         children: [
          Center(
@@ -150,7 +155,7 @@ class TelaBraza extends StatelessWidget {
             children: [
               Text("Feijoada",
               style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),//Title
-              Text("Aestsdfsfajdahdjabdja",
+              Text("AS melhores tem Linguiça 🤤",
               style: TextStyle(fontSize: 20),textAlign: TextAlign.center,), //Body
               Container(height: 10,),
               Image.network('https://img.nsctotal.com.br/wp-content/uploads/2022/06/feijoada-944x531.jpg', width: 280)              
@@ -168,10 +173,31 @@ class TelaChingLing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Comidas Tipicas Ching Ling"),
+        backgroundColor: Colors.red,
+      ),
       body: Column(
         children: [
-          Container(color: Colors.red, width: 250, height: 100,
-          child: Image.network('https://www.infoescola.com/wp-content/uploads/2017/04/pombo-comum_349117397.jpg', width: 100, height: 80,),)
+          Center(
+            child: Image.network('https://static.significados.com.br/foto/china.jpg', 
+            width: 200,height: 100,
+          )),
+          Container(width: 100,height: 30,),
+          Container(color: Colors.red, width: 200, height: 60,
+          child: Text("Comida \n Ching Ling", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: const Color.fromARGB(180, 0, 0, 0)), textAlign: TextAlign.center,),),
+          Container(width: 100,height: 30,),
+          Container(color: Colors.red, width: 300, height: 370,
+          child: Column(
+            children: [
+              Text("Pombeta",
+              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),//Title
+              Text("Uma culinária unica e extremamente versátil, possuindo diversos metodos de preparar",
+              style: TextStyle(fontSize: 20),textAlign: TextAlign.center,), //Body
+              Container(height: 10,),
+              Image.network('https://www.infoescola.com/wp-content/uploads/2017/04/pombo-comum_349117397.jpg', width: 280)              
+            ],)
+          ),
         ]
       ),
     );
@@ -184,11 +210,32 @@ class TelaFranca extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Comidas Tipicas francesas"),
+        backgroundColor: Colors.blue,
+      ),
       body: Column(
         children: [
-          Container(color: Colors.blue, width: 250, height: 100,
-          child: Image.network('https://www.infoescola.com/wp-content/uploads/2017/04/pombo-comum_349117397.jpg', width: 100, height: 80,),)
-        ]
+          Center(
+            child: Image.network('https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/800px-Flag_of_France.svg.png', 
+            width: 200,height: 100,
+          )),
+          Container(width: 100,height: 30,),
+          Container(color: Colors.lightBlue[800], width: 200, height: 60,
+          child: Text("Comida \n Francesa", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: const Color.fromARGB(180, 0, 0, 0)), textAlign: TextAlign.center,),),
+          Container(width: 100,height: 30,),
+          Container(color: Colors.lightBlue[800], width: 300, height: 370,
+          child: Column(
+            children: [
+              Text("Not a Hallowen Prank",
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),//Title
+              Text("Servido nos Eventos bombasticos das principais atrações de Paris na França",
+              style: TextStyle(fontSize: 20),textAlign: TextAlign.center,), //Body
+              Container(height: 10,),
+              Image.network('https://www.sitedaseguranca.com.br/wp-content/uploads/2016/04/colete-bomba.jpg', width: 280, height: 150,)              
+            ],)
+          ),
+         ]
       ),
     );
   }
@@ -200,11 +247,32 @@ class TelaMexico extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Comidas Tipicas Mexicanas"),
+        backgroundColor: Colors.blue,
+      ),
       body: Column(
         children: [
-          Container(color: Colors.orangeAccent, width: 250, height: 100,
-          child: Image.network('https://www.infoescola.com/wp-content/uploads/2017/04/pombo-comum_349117397.jpg', width: 100, height: 80,),)
-        ]
+          Center(
+            child: Container(color: Colors.orange, width: 500, height: 100,
+              child: Image.network('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/1280px-Flag_of_Mexico.svg.png', 
+            width: 200,height: 100),
+            )),
+          Container(width: 100,height: 30,),
+          Container(color: Colors.orange, width: 200, height: 60,
+          child: Text("Comida \n Mexicana", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: const Color.fromARGB(180, 0, 0, 0)), textAlign: TextAlign.center,),),
+          Container(width: 100,height: 30,),
+          Container(color: Colors.orange, width: 300, height: 370,
+          child: Column(
+            children: [
+              Text("Farinha de trigo",
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),//Title
+              Text("Perfeito para a fabricação em massa de pão caseiro",
+              style: TextStyle(fontSize: 20),textAlign: TextAlign.center,), //Body
+              Container(height: 10,),
+              Image.network('https://s2.static.brasilescola.uol.com.br/be/2023/10/pacote-de-plastico-com-cocaina-ao-lado-duas-linhas-e-pilha-de-cocaina-em-fundo-preto.jpg', width: 280, height: 150,)              
+            ],)
+          ),]
       ),
     );
   }
