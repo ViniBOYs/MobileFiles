@@ -184,6 +184,7 @@ class TelaChingLing extends StatelessWidget {
             width: 200,height: 100,
           )),
           Container(width: 100,height: 30,),
+
           Container(color: Colors.red, width: 200, height: 60,
           child: Text("Comida \n Ching Ling", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: const Color.fromARGB(180, 0, 0, 0)), textAlign: TextAlign.center,),),
           Container(width: 100,height: 30,),
