@@ -137,10 +137,11 @@ class _HomeState extends State<Home> {
             ),
             ElevatedButton(onPressed: () {
               setState(() {
-                double input = double.tryParse(valueIn.text) ?? 0;
-                if (selectedColor?.label == 'BRL' && selectedIcon?.label == 'USD') {
-                  finalValue = input * 5;
-                }
+                double? input = double.tryParse(valueIn.text) ?? 0;
+                // if (selectedColor?.label == 'BRL' && selectedIcon?.label == 'USD') {
+                //   double result = input * 5;
+                //   finalValue = String(valueIn.text) ?? 0;
+                // }
               });
             }, child: Text("teste"))
             
