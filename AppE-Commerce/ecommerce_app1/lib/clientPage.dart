@@ -1,3 +1,4 @@
+import 'package:ecommerce_app1/admin.dart';
 import 'package:flutter/material.dart';
 
 class clietHomePage extends StatefulWidget {
@@ -7,6 +8,36 @@ class clietHomePage extends StatefulWidget {
   State<clietHomePage> createState() => _clietHomePageState();
 }
 
+class ItensToBuyComponent extends StatefulWidget {
+  const ItensToBuyComponent({super.key});
+
+  @override
+  State<ItensToBuyComponent> createState() => _ItensToBuyComponentState();
+}
+
+class _ItensToBuyComponentState extends State<ItensToBuyComponent> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Column(
+          children: [
+            Container(height: 100,color: Colors.amber,),
+            componentItem("test2", "teste", 100)
+          ],
+        )
+      ],
+    );
+  }
+}
+
+
+
+
+
+
+
+
 class _clietHomePageState extends State<clietHomePage> {
   @override
   Widget build(BuildContext context) {
@@ -15,9 +46,10 @@ class _clietHomePageState extends State<clietHomePage> {
         title: Text("Tela Do Cliente"),
         backgroundColor: Colors.red,
       ),
-      body: Column(
+      body: ListView(
         children: [
-          Container(width: 100,height: 100,color: Colors.amber,)
+          // Container(height: 100,color: Colors.amber,)
+          ItensToBuyComponent(),
         ],
       ),
     );

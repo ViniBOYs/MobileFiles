@@ -48,7 +48,7 @@ class _componentItemState extends State<componentItem> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(width: 196,height: double.maxFinite,child: Image.asset('${widget.img}'),),
+                Container(width: 196,height: double.maxFinite,child: Image.asset('${widget.img}')),
                 Container(width: 196,height: double.maxFinite,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
