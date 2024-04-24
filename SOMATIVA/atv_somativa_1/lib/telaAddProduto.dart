@@ -12,7 +12,7 @@ class _TelaAddProdutosState extends State<TelaAddProdutos> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tela De Login"),
+        title: Text("Tela De Produtos"),
         backgroundColor: Color.fromARGB(255,49, 101, 244),
       ),
       body: ListView( 
