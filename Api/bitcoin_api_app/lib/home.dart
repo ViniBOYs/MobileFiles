@@ -43,6 +43,7 @@ class _HomeState extends State<Home> {
   MoneyTypeOutLabel? selectedIcon;
   String ? _precoBitcoin; //variavel para armazenar o valor do bitcoin
   
+  
   // async é porque a função vai esperar uma resposta da api pelo metodo http.get
   _consultaPrecoBitcoin() async{
     String url = "https://blockchain.info/ticker"; // url da api
@@ -54,6 +55,8 @@ class _HomeState extends State<Home> {
     });
     print(_precoBitcoin);
   }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
