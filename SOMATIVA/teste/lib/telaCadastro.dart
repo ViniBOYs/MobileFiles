@@ -1,18 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert'; 
 
-class TelaAddProdutos extends StatefulWidget {
-  const TelaAddProdutos({super.key});
+class TelaCadastro extends StatefulWidget {
+  const TelaCadastro({super.key});
 
   @override
-  State<TelaAddProdutos> createState() => _TelaAddProdutosState();
+  State<TelaCadastro> createState() => _TelaCadastroState();
 }
 
-class _TelaAddProdutosState extends State<TelaAddProdutos> {
+class _TelaCadastroState extends State<TelaCadastro> {
+  TextEditingController userInp = TextEditingController();
+  TextEditingController passwordInp = TextEditingController();
+  
+  String url = "http://10.109.83.4:3000/usuarios";
+
+  _post(){
+    Map<String,dynamic>usuarios={
+      "login":"${userInp.text}",
+      "senha": "${passwordInp.text}"
+    };
+    
+    http.post(
+      Uri.parse(url),
+      headers: <String,String>{
+        'Content-type':'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(usuarios),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tela De Login"),
+        title: Text("Tela De Cadastro"),
         backgroundColor: Color.fromARGB(255,49, 101, 244),
       ),
       body: ListView( 
@@ -21,14 +44,16 @@ class _TelaAddProdutosState extends State<TelaAddProdutos> {
           Container(height: 680, color: Color.fromARGB(250,205, 255, 255),
           child: 
             Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                Image.asset("images/user_screen.png", width: 200,height: 200,),
+                SizedBox(height: 50,),
                 Container(
                   // color: Colors.amber,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Icon(Icons.group,size: 50,color: Color.fromARGB(255,49, 101, 244),),
+                      Icon(Icons.group_add,size: 50,color: Color.fromARGB(255,49, 101, 244),),
                       SizedBox(width: 300,
                         child: TextField(
                           keyboardType: TextInputType.name, // text field para o login
@@ -36,9 +61,7 @@ class _TelaAddProdutosState extends State<TelaAddProdutos> {
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Color.fromARGB(255,49, 101, 244)),
                               borderRadius: BorderRadius.circular(15)),
-                            // focusedBorder: UnderlineInputBorder(
-                            //  borderSide: BorderSide(color: Color.fromARGB(255,29, 99, 245))),
-                            hintText: "Insira seu login",
+                            hintText: "Novo Usuário",
                             border: OutlineInputBorder(    
                               borderRadius: BorderRadius.circular(5) // borda do TextField
                             ),
@@ -50,7 +73,7 @@ class _TelaAddProdutosState extends State<TelaAddProdutos> {
                             ),
                           ),
                           style: TextStyle(color: Color.fromARGB(255,9, 121, 176),fontWeight: FontWeight.bold),
-                          // controller: loginInp ,
+                          controller: userInp
                         ),
                       ),
                     ],
@@ -72,7 +95,7 @@ class _TelaAddProdutosState extends State<TelaAddProdutos> {
                               borderRadius: BorderRadius.circular(15)),
                             // focusedBorder: UnderlineInputBorder(
                             //  borderSide: BorderSide(color: Color.fromARGB(255,29, 99, 245))),
-                            hintText: "Insira sua Senha",
+                            hintText: "Senha",
                             border: OutlineInputBorder(    
                               borderRadius: BorderRadius.circular(5) // borda do TextField
                             ),
@@ -84,7 +107,7 @@ class _TelaAddProdutosState extends State<TelaAddProdutos> {
                             ),
                           ),
                           style: TextStyle(color: Color.fromARGB(255,9, 121, 176),fontWeight: FontWeight.bold),
-                          // controller: passInp,
+                          controller: passwordInp ,
                           obscureText: true,
                         ),
                       ),
@@ -93,21 +116,10 @@ class _TelaAddProdutosState extends State<TelaAddProdutos> {
                   ),
                 ),
                 SizedBox(height: 30,),
-                InkWell(
-                  child: Text(
-                    'Cadastrar-se',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue,
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                  // onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>TelaCadastro()))
-                ),
                 ElevatedButton(onPressed: (){
-                  // _getProdutos();
-                }, 
-                child: Text("Entrar")),
+                  _post();
+                }, child: Text("Cadastrar")),
+                Text("${userInp.text}")
               ]
             ),
           )

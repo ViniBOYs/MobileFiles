@@ -1,0 +1,96 @@
+{
+  "produtos": [
+    {
+      "id": "0",
+      "nome": "Ipad",
+      "valor": "5000"
+    },
+    {
+      "id": "1",
+      "nome": "Iphone",
+      "valor": "8000"
+    },
+    {
+      "id": "2",
+      "nome": "Notebook",
+      "valor": "5500"
+    },
+    {
+      "id": "7",
+      "nome": "Nintendo Switch",
+      "valor": "2800"
+    },
+    {
+      "id": "7ee6",
+      "nome": "PS5",
+      "valor": "3700"
+    },
+    {
+      "id": "a4a5",
+      "nome": "Mac Pro",
+      "valor": "15000"
+    },
+    {
+      "id": "736a",
+      "nome": "Xbox Series X",
+      "valor": "2500"
+    },
+    {
+      "id": "7e9d",
+      "nome": "Mac Pro",
+      "valor": "15000"
+    },
+    {
+      "id": "91db",
+      "nome": "Danoninho Gelo",
+      "valor": "5"
+    },
+    {
+      "id": "334e",
+      "nome": "WhatsApp 2",
+      "valor": "512435"
+    },
+    {
+      "id": "da80",
+      "nome": "Capa 1",
+      "valor": "20"
+    },
+    {
+      "id": "56e6",
+      "nome": "Capa 2",
+      "valor": "30"
+    },
+    {
+      "id": "7716",
+      "nome": "Capa 3",
+      "valor": "50"
+    },
+    {
+      "id": "f4fe",
+      "nome": "Cristiano Ronaldo",
+      "valor": "8"
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "0",
+      "login": "CleberMachado",
+      "senha": "MarretaDeAssis"
+    },
+    {
+      "id": "1",
+      "login": "Bem 10",
+      "senha": "xrl-8"
+    },
+    {
+      "id": "8779",
+      "login": "Cleide",
+      "senha": "1232"
+    },
+    {
+      "id": "a280",
+      "login": "test",
+      "senha": "123"
+    }
+  ]
+}

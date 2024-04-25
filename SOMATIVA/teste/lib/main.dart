@@ -1,13 +1,62 @@
+
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-class TelaAddProdutos extends StatefulWidget {
-  const TelaAddProdutos({super.key});
+import 'package:teste/telaCadastro.dart';
+import 'package:teste/telaProdutos.dart'; 
 
-  @override
-  State<TelaAddProdutos> createState() => _TelaAddProdutosState();
+void main(){
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: LoginPage(),
+  ));
 }
 
-class _TelaAddProdutosState extends State<TelaAddProdutos> {
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  TextEditingController loginInp = TextEditingController();
+  TextEditingController passInp = TextEditingController();
+
+  String url = "http://10.109.83.4:3000/usuarios";
+
+  var dados =[];
+
+  _getUsers()async{
+    http.Response resposta = await http.get(Uri.parse(url));
+    dados = json.decode(resposta.body) as List;
+    print(dados);
+
+    bool encontrou = false;
+
+    
+    for (int i = 0; i<dados.length;)
+    {
+      if(loginInp.text == dados[i]["login"] && passInp.text == dados[i]["senha"]){
+      encontrou = true;
+      print("SenhaEncontrada");
+      break;
+      }
+      i++;
+    }
+    if (encontrou == true) {
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>TelaProdutos()));
+      encontrou = false;
+    }
+
+
+
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,8 +70,9 @@ class _TelaAddProdutosState extends State<TelaAddProdutos> {
           Container(height: 680, color: Color.fromARGB(250,205, 255, 255),
           child: 
             Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                Image.asset("images/logo.png", width: 200,height: 200,),
                 Container(
                   // color: Colors.amber,
                   child: Row(
@@ -50,7 +100,7 @@ class _TelaAddProdutosState extends State<TelaAddProdutos> {
                             ),
                           ),
                           style: TextStyle(color: Color.fromARGB(255,9, 121, 176),fontWeight: FontWeight.bold),
-                          // controller: loginInp ,
+                          controller: loginInp ,
                         ),
                       ),
                     ],
@@ -84,7 +134,7 @@ class _TelaAddProdutosState extends State<TelaAddProdutos> {
                             ),
                           ),
                           style: TextStyle(color: Color.fromARGB(255,9, 121, 176),fontWeight: FontWeight.bold),
-                          // controller: passInp,
+                          controller: passInp,
                           obscureText: true,
                         ),
                       ),
@@ -102,10 +152,10 @@ class _TelaAddProdutosState extends State<TelaAddProdutos> {
                       decoration: TextDecoration.underline,
                     ),
                   ),
-                  // onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>TelaCadastro()))
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>TelaCadastro()))
                 ),
                 ElevatedButton(onPressed: (){
-                  // _getProdutos();
+                  _getUsers();
                 }, 
                 child: Text("Entrar")),
               ]

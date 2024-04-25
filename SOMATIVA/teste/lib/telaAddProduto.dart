@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:teste/telaProdutos.dart';
 
 class TelaAddProdutos extends StatefulWidget {
   const TelaAddProdutos({super.key});
@@ -8,11 +12,34 @@ class TelaAddProdutos extends StatefulWidget {
 }
 
 class _TelaAddProdutosState extends State<TelaAddProdutos> {
+
+  TextEditingController prodName = TextEditingController();
+  TextEditingController prodPrice = TextEditingController();
+
+  String url = "http://10.109.83.4:3000/produtos";
+
+  _postProdutoNovo(){
+    Map<String,dynamic>produtos={
+      "nome":prodName.text.toString(),
+      "valor": prodPrice.text.toString()
+    };
+    
+    http.post(
+      Uri.parse(url),
+      headers: <String,String>{
+        'Content-type':'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(produtos),
+    );
+  }
+
+
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tela De Login"),
+        title: Text("Tela De Adicionar Produtos"),
         backgroundColor: Color.fromARGB(255,49, 101, 244),
       ),
       body: ListView( 
@@ -23,34 +50,37 @@ class _TelaAddProdutosState extends State<TelaAddProdutos> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                
                 Container(
                   // color: Colors.amber,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Icon(Icons.group,size: 50,color: Color.fromARGB(255,49, 101, 244),),
+                      Icon(Icons.production_quantity_limits,size: 50,color: Color.fromARGB(255,49, 101, 244),),
                       SizedBox(width: 300,
                         child: TextField(
                           keyboardType: TextInputType.name, // text field para o login
                           decoration: InputDecoration(
+                            labelText: "Nome Produto",
+                            floatingLabelBehavior: FloatingLabelBehavior.always,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Color.fromARGB(255,49, 101, 244)),
                               borderRadius: BorderRadius.circular(15)),
-                            // focusedBorder: UnderlineInputBorder(
-                            //  borderSide: BorderSide(color: Color.fromARGB(255,29, 99, 245))),
-                            hintText: "Insira seu login",
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Color.fromARGB(255,29, 99, 245),width: 3),
+                              borderRadius: BorderRadius.circular(5)),
+                            hintText: "Insira o Nome do Produto",
                             border: OutlineInputBorder(    
                               borderRadius: BorderRadius.circular(5) // borda do TextField
                             ),
                             labelStyle: TextStyle(
-                              backgroundColor:Colors.white,
-                              color: Colors.red,
-                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255,9, 121, 176),
+                              // fontWeight: FontWeight.w600,
                               fontSize: 20
                             ),
                           ),
                           style: TextStyle(color: Color.fromARGB(255,9, 121, 176),fontWeight: FontWeight.bold),
-                          // controller: loginInp ,
+                          controller: prodName ,
                         ),
                       ),
                     ],
@@ -58,56 +88,44 @@ class _TelaAddProdutosState extends State<TelaAddProdutos> {
                 ),
                 SizedBox(height: 20,),
                 Container(
-                  // color: Colors.amber,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Icon(Icons.key,size: 50,color: Color.fromARGB(255,49, 101, 244),),
+                      Icon(Icons.attach_money,size: 50,color: Color.fromARGB(255,49, 101, 244),),
                       SizedBox(width: 300,
                         child: TextField(
-                          keyboardType: TextInputType.name, // text field para o login
+                          keyboardType: TextInputType.number, // text field para o login
                           decoration: InputDecoration(
+                            labelText: "Valor do Produto",
+                            floatingLabelBehavior: FloatingLabelBehavior.always,
                             enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color.fromARGB(255,29, 99, 245)),
+                              borderSide: BorderSide(color: Color.fromARGB(255,49, 101, 244),),
                               borderRadius: BorderRadius.circular(15)),
-                            // focusedBorder: UnderlineInputBorder(
-                            //  borderSide: BorderSide(color: Color.fromARGB(255,29, 99, 245))),
-                            hintText: "Insira sua Senha",
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Color.fromARGB(255,29, 99, 245),width: 3)),
                             border: OutlineInputBorder(    
                               borderRadius: BorderRadius.circular(5) // borda do TextField
                             ),
+                            hintText: "Insira o Nome do Produto",
                             labelStyle: TextStyle(
-                              backgroundColor:Colors.white,
-                              color: Colors.red,
-                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255,9, 121, 176),
+                              // fontWeight: FontWeight.w600,
                               fontSize: 20
                             ),
                           ),
                           style: TextStyle(color: Color.fromARGB(255,9, 121, 176),fontWeight: FontWeight.bold),
-                          // controller: passInp,
-                          obscureText: true,
+                          controller: prodPrice ,
                         ),
                       ),
-
                     ],
                   ),
-                ),
+                ),               
                 SizedBox(height: 30,),
-                InkWell(
-                  child: Text(
-                    'Cadastrar-se',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue,
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                  // onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>TelaCadastro()))
-                ),
                 ElevatedButton(onPressed: (){
-                  // _getProdutos();
+                  _postProdutoNovo();
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>TelaProdutos()));
                 }, 
-                child: Text("Entrar")),
+                child: Text("Enviar Produto")),
               ]
             ),
           )
